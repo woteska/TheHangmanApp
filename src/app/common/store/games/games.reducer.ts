@@ -1,4 +1,4 @@
-import {createReducer, on} from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as GamesActions from './games.actions';
 
 export const name = 'games';

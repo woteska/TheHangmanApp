@@ -1,5 +1,5 @@
-import {isDevMode} from '@angular/core';
-import {ActionReducerMap, MetaReducer} from '@ngrx/store';
+import { isDevMode } from '@angular/core';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import * as fromGames from './games/games.reducer';
 
 export interface AppRootState {
