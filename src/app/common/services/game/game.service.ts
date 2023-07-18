@@ -22,7 +22,7 @@ export class GameService {
   }
 
   private createGameId(): GameId {
-    return new Date().getTime().toString();
+    return `${new Date().getTime()}__${Math.floor(Math.random() * 100)}`;
   }
 
   private getRandomWord(numberOfLetters: NumberOfLetters): string {
