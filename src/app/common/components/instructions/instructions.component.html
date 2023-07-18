@@ -1,0 +1,17 @@
+<div class="card">
+  <h1 class="heading">{{'the hangman' | titlecase}}</h1>
+
+  <app-hangman class="hangman"></app-hangman>
+
+  <h3 class="sub-heading">Game instructions</h3>
+
+  <div class="description">
+    <p class="description__item">Lorem ipsum</p>
+  </div>
+
+  <div>
+    <button (click)="onGotIt()" class="got-it-button"
+            mat-flat-button
+            tabindex="0">{{'got it!' | uppercase}}</button>
+  </div>
+</div>

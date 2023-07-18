@@ -26,7 +26,7 @@ export class GameService {
   }
 
   private getRandomWord(numberOfLetters: NumberOfLetters): string {
-    if (numberOfLetters === -1) {
+    if (numberOfLetters === 0) {
       return sample(words) || '';
     } else {
       const filteredWords = words.filter(word => word.length === numberOfLetters);
