@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AlphabetLetter } from '../../common/definitions/alphabet-letter';
 import { GameId } from '../../common/definitions/game-id';
 import { GameStatus } from '../../common/definitions/game-status';
+import { GameNavigationService } from '../../common/services/game-navigation/game-navigation.service';
 import * as GamesActions from '../../common/store/games/games.actions';
 import * as GamesSelectors from '../../common/store/games/games.selectors';
 
@@ -24,7 +25,7 @@ export class GameRoutingComponent {
   private readonly gameId: GameId;
 
   constructor(private readonly store: Store,
-              private readonly router: Router,
+              private readonly gameNavigationService: GameNavigationService,
               private readonly activatedRoute: ActivatedRoute) {
     this.gameId = this.activatedRoute.snapshot.paramMap.get('gameId') || '';
     this.data$ = this.store.select(GamesSelectors.selectGame({ id: this.gameId }));
@@ -34,16 +35,16 @@ export class GameRoutingComponent {
     this.status$ = this.store.select(GamesSelectors.selectGameStatus({ id: this.gameId }));
   }
 
-  navigateToStartNewGamePage(): void {
-    this.router.navigate(['start-new-game']);
+  onStartNewGame(): void {
+    this.gameNavigationService.toStartNewGame();
   }
 
   updateUsedLetters(alphabetLetter: AlphabetLetter): void {
     this.store.dispatch(GamesActions.updateUsedLetters({ id: this.gameId, letter: alphabetLetter.letter }));
   }
 
-  endGame(): void {
+  onEndGame(): void {
     this.store.dispatch(GamesActions.endGame({ id: this.gameId }));
-    this.navigateToStartNewGamePage();
+    this.onStartNewGame();
   }
 }

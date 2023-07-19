@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { GameNavigationService } from '../../common/services/game-navigation/game-navigation.service';
 
 @Component({
   selector: 'app-instructions-routing',
@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InstructionsRoutingComponent {
-  constructor(private readonly router: Router) {
+  
+  constructor(private readonly gameNavigationService: GameNavigationService) {
   }
 
-  navigateToStartNewGamePage(): void {
-    this.router.navigate(['start-new-game']);
+  onGotIt(): void {
+    this.gameNavigationService.toStartNewGame();
   }
 }

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NumberOfLetters } from '../../common/definitions/number-of-letters';
+import { GameNavigationService } from '../../common/services/game-navigation/game-navigation.service';
 import { GameService } from '../../common/services/game/game.service';
 
 @Component({
@@ -10,12 +10,13 @@ import { GameService } from '../../common/services/game/game.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StartNewGameRoutingComponent {
-  constructor(private readonly router: Router,
+
+  constructor(private readonly gameNavigationService: GameNavigationService,
               private readonly gameService: GameService) {
   }
 
-  startNewGame(numberOfLetters: NumberOfLetters): void {
+  onStartNewGame(numberOfLetters: NumberOfLetters): void {
     const gameId = this.gameService.startNewGame(numberOfLetters);
-    this.router.navigate(['game', gameId]);
+    this.gameNavigationService.toGame(gameId);
   }
 }

@@ -14,13 +14,13 @@
                   [isDisabled]="status !== GameStatus.Pending"></app-alphabet>
 
     <div>
-      <button (click)="endGame()"
+      <button (click)="onEndGame()"
               *ngIf="status === GameStatus.Pending"
               class="end-game-button"
               mat-flat-button
               tabindex="0">{{'end game' | uppercase}}</button>
 
-      <button (click)="navigateToStartNewGamePage()"
+      <button (click)="onStartNewGame()"
               class="start-new-game-button"
               mat-flat-button
               tabindex="0">{{'start new game' | uppercase}}</button>
