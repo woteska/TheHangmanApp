@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { AlphabetComponent } from '../common/components/alphabet/alphabet.component';
 import { HangmanComponent } from '../common/components/hangman/hangman.component';
 import { InstructionsComponent } from '../common/components/instructions/instructions.component';
@@ -23,7 +24,8 @@ import { StartNewGameRoutingComponent } from './start-new-game-routing/start-new
     StartNewGameComponent,
     WordComponent,
     AlphabetComponent,
-    HangmanComponent
+    HangmanComponent,
+    MatButtonModule
   ]
 })
 export class ApplicationsModule {

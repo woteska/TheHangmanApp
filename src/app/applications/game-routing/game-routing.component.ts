@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AlphabetLetter } from '../../common/definitions/alphabet-letter';
 import { GameId } from '../../common/definitions/game-id';
@@ -20,12 +20,17 @@ export class GameRoutingComponent {
   private readonly gameId: GameId;
 
   constructor(private readonly store: Store,
+              private readonly router: Router,
               private readonly activatedRoute: ActivatedRoute) {
     this.gameId = this.activatedRoute.snapshot.paramMap.get('gameId') || '';
     this.data$ = this.store.select(GamesSelectors.selectGame({ id: this.gameId }));
     this.alphabet$ = this.store.select(GamesSelectors.selectAlphabet({ id: this.gameId }));
     this.displayedWord$ = this.store.select(GamesSelectors.selectDisplayedWord({ id: this.gameId }));
     this.numberOfBadTries = this.store.select(GamesSelectors.selectNumberOfBadTries({ id: this.gameId }));
+  }
+
+  navigateToStartNewGamePage(): void {
+    this.router.navigate(['start-new-game']);
   }
 
   updateUsedLetters(alphabetLetter: AlphabetLetter): void {
