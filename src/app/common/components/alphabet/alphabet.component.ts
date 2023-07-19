@@ -12,9 +12,13 @@ import { AlphabetLetter } from '../../definitions/alphabet-letter';
 })
 export class AlphabetComponent {
   @Input({ required: true }) alphabet: Array<AlphabetLetter> = [];
+  @Input() isDisabled = true;
   @Output() readonly update = new EventEmitter<AlphabetLetter>();
 
   onType(letter: AlphabetLetter): void {
+    if (this.isDisabled) {
+      return;
+    }
     if (letter.isDisabled) {
       return;
     }

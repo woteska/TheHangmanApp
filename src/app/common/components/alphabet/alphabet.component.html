@@ -1,4 +1,7 @@
-<div class="alphabet">
+<div [ngClass]="{
+       'alphabet': true,
+       'alphabet--disabled': isDisabled
+       }">
   <div (click)="onType(letter)" *ngFor="let letter of alphabet"
        [ngClass]="{
        'alphabet__letter': true,

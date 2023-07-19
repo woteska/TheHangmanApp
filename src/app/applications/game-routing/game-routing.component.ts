@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AlphabetLetter } from '../../common/definitions/alphabet-letter';
 import { GameId } from '../../common/definitions/game-id';
+import { GameStatus } from '../../common/definitions/game-status';
 import * as GamesActions from '../../common/store/games/games.actions';
 import * as GamesSelectors from '../../common/store/games/games.selectors';
 
@@ -16,7 +17,10 @@ export class GameRoutingComponent {
   readonly data$;
   readonly alphabet$;
   readonly displayedWord$;
-  readonly numberOfBadTries;
+  readonly numberOfBadTries$;
+  readonly status$;
+  readonly GameStatus = GameStatus;
+  protected readonly Performance = Performance;
   private readonly gameId: GameId;
 
   constructor(private readonly store: Store,
@@ -26,7 +30,8 @@ export class GameRoutingComponent {
     this.data$ = this.store.select(GamesSelectors.selectGame({ id: this.gameId }));
     this.alphabet$ = this.store.select(GamesSelectors.selectAlphabet({ id: this.gameId }));
     this.displayedWord$ = this.store.select(GamesSelectors.selectDisplayedWord({ id: this.gameId }));
-    this.numberOfBadTries = this.store.select(GamesSelectors.selectNumberOfBadTries({ id: this.gameId }));
+    this.numberOfBadTries$ = this.store.select(GamesSelectors.selectNumberOfBadTries({ id: this.gameId }));
+    this.status$ = this.store.select(GamesSelectors.selectGameStatus({ id: this.gameId }));
   }
 
   navigateToStartNewGamePage(): void {
@@ -35,5 +40,10 @@ export class GameRoutingComponent {
 
   updateUsedLetters(alphabetLetter: AlphabetLetter): void {
     this.store.dispatch(GamesActions.updateUsedLetters({ id: this.gameId, letter: alphabetLetter.letter }));
+  }
+
+  endGame(): void {
+    this.store.dispatch(GamesActions.endGame({ id: this.gameId }));
+    this.navigateToStartNewGamePage();
   }
 }

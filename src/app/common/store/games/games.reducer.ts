@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { GameStatus } from '../../definitions/game-status';
 import { Games } from '../../definitions/games';
 import * as GamesActions from './games.actions';
 
@@ -21,7 +22,8 @@ export const reducer = createReducer(
       ...state.games,
       [id]: {
         word: word,
-        usedLetters: []
+        usedLetters: [],
+        status: GameStatus.Pending
       }
     }
   })),
@@ -32,6 +34,26 @@ export const reducer = createReducer(
       [id]: {
         ...state.games[id],
         usedLetters: Array.from(new Set([...state.games[id].usedLetters, letter]))
+      }
+    }
+  })),
+  on(GamesActions.updateStatus, (state, { id, status }): GamesState => ({
+    ...state,
+    games: {
+      ...state.games,
+      [id]: {
+        ...state.games[id],
+        status
+      }
+    }
+  })),
+  on(GamesActions.endGame, (state, { id }): GamesState => ({
+    ...state,
+    games: {
+      ...state.games,
+      [id]: {
+        ...state.games[id],
+        status: GameStatus.Ended
       }
     }
   }))

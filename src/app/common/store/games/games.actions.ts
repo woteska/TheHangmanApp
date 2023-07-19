@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { GameId } from '../../definitions/game-id';
+import { GameStatus } from '../../definitions/game-status';
 import { NumberOfLetters } from '../../definitions/number-of-letters';
 
 const prefix = '[Games]';
@@ -12,3 +13,9 @@ export const startNewGame = createAction(`${prefix} Start New Game`,
 
 export const updateUsedLetters = createAction(`${prefix} Update Used Letters`,
   props<{ id: GameId; letter: string; }>());
+
+export const updateStatus = createAction(`${prefix} Update Status`,
+  props<{ id: GameId; status: GameStatus; }>());
+
+export const endGame = createAction(`${prefix} End Game`,
+  props<{ id: GameId; }>());

@@ -1,12 +1,20 @@
-{{data$ | async | json}}
+<ng-container *ngIf="status$ | async as status">
+  {{status}}
+  <app-hangman [numberOfTries]="(numberOfBadTries$ | async) || 0" class="hangman"></app-hangman>
+  <app-word [word]="(displayedWord$ | async) || []"></app-word>
+  <app-alphabet (update)="updateUsedLetters($event)" [alphabet]="(alphabet$ | async) || []"
+                [isDisabled]="status !== GameStatus.Pending"></app-alphabet>
 
-<app-hangman [numberOfTries]="(numberOfBadTries | async) || 0" class="hangman"></app-hangman>
-<app-word [word]="(displayedWord$ | async) || []"></app-word>
-<app-alphabet (update)="updateUsedLetters($event)" [alphabet]="(alphabet$ | async) || []"></app-alphabet>
+  <div>
+    <button (click)="endGame()"
+            *ngIf="status === GameStatus.Pending"
+            class="end-game-button"
+            mat-flat-button
+            tabindex="0">{{'end game' | uppercase}}</button>
 
-<div>
-  <button (click)="navigateToStartNewGamePage()"
-          class="start-new-game-button"
-          mat-flat-button
-          tabindex="0">{{'start new game' | uppercase}}</button>
-</div>
+    <button (click)="navigateToStartNewGamePage()"
+            class="start-new-game-button"
+            mat-flat-button
+            tabindex="0">{{'start new game' | uppercase}}</button>
+  </div>
+</ng-container>

@@ -3,6 +3,7 @@ import { alphabet } from '../../definitions/alphabet';
 import { AlphabetLetter } from '../../definitions/alphabet-letter';
 import { Game } from '../../definitions/game';
 import { GameId } from '../../definitions/game-id';
+import { GameStatus } from '../../definitions/game-status';
 import * as fromGames from './games.reducer';
 
 export const selectGamesState = createFeatureSelector<fromGames.GamesState>(fromGames.name);
@@ -21,6 +22,12 @@ export const selectDisplayedWord = (props: { id: GameId; }): MemoizedSelector<ob
     }
   );
 
+export const selectIsAllLettersFound = (props: { id: GameId; }): MemoizedSelector<object, boolean> =>
+  createSelector(selectGame({ id: props.id }), game => {
+      return Array.from(game.word).every(letter => game.usedLetters.includes(letter));
+    }
+  );
+
 export const selectAlphabet = (props: {
   id: GameId;
 }): MemoizedSelector<object, Array<AlphabetLetter>> =>
@@ -36,5 +43,11 @@ export const selectAlphabet = (props: {
 export const selectNumberOfBadTries = (props: { id: GameId; }): MemoizedSelector<object, number> =>
   createSelector(selectGame({ id: props.id }), game => {
       return game.usedLetters.filter(letter => !game.word.includes(letter)).length;
+    }
+  );
+
+export const selectGameStatus = (props: { id: GameId; }): MemoizedSelector<object, GameStatus> =>
+  createSelector(selectGame({ id: props.id }), game => {
+      return game.status;
     }
   );
