@@ -24,5 +24,15 @@ export const reducer = createReducer(
         usedLetters: []
       }
     }
+  })),
+  on(GamesActions.updateUsedLetters, (state, { id, letter }): GamesState => ({
+    ...state,
+    games: {
+      ...state.games,
+      [id]: {
+        ...state.games[id],
+        usedLetters: Array.from(new Set([...state.games[id].usedLetters, letter]))
+      }
+    }
   }))
 );

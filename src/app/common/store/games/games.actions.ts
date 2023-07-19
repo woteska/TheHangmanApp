@@ -9,3 +9,6 @@ export const clear = createAction(`${prefix} Clear`);
 
 export const startNewGame = createAction(`${prefix} Start New Game`,
   props<{ id: GameId; numberOfLetters: NumberOfLetters; word: string; }>());
+
+export const updateUsedLetters = createAction(`${prefix} Update Used Letters`,
+  props<{ id: GameId; letter: string; }>());
