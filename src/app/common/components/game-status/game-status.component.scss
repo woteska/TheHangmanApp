@@ -1,0 +1,16 @@
+.status--lost {
+  color: red;
+}
+
+.status--won {
+  color: green;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+}
+
+.status__text {
+  margin: 0 0.25rem;
+}
