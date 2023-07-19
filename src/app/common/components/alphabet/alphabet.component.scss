@@ -5,11 +5,17 @@
   width: fit-content;
 
   .alphabet__letter {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 1.5rem;
     height: 1.5rem;
     box-shadow: 0 0 0.1rem 0 gray;
+  }
+
+  .alphabet__letter--disabled {
+    opacity: 0.8;
+    cursor: default;
   }
 }

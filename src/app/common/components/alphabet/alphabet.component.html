@@ -2,7 +2,7 @@
   <div (click)="onType(letter)" *ngFor="let letter of alphabet"
        [ngClass]="{
        'alphabet__letter': true,
-       'alphabet_letter--disabled': letter.isDisabled
+       'alphabet__letter--disabled': letter.isDisabled
        }">
     {{letter.letter}}</div>
 </div>

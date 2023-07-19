@@ -15,6 +15,9 @@ export class AlphabetComponent {
   @Output() readonly update = new EventEmitter<AlphabetLetter>();
 
   onType(letter: AlphabetLetter): void {
+    if (letter.isDisabled) {
+      return;
+    }
     this.update.emit(letter);
   }
 }
