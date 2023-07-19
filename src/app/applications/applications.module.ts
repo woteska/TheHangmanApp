@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AlphabetComponent } from '../common/components/alphabet/alphabet.component';
+import { HangmanComponent } from '../common/components/hangman/hangman.component';
 import { InstructionsComponent } from '../common/components/instructions/instructions.component';
 import { StartNewGameComponent } from '../common/components/start-new-game/start-new-game.component';
 import { WordComponent } from '../common/components/word/word.component';
@@ -21,7 +22,8 @@ import { StartNewGameRoutingComponent } from './start-new-game-routing/start-new
     InstructionsComponent,
     StartNewGameComponent,
     WordComponent,
-    AlphabetComponent
+    AlphabetComponent,
+    HangmanComponent
   ]
 })
 export class ApplicationsModule {

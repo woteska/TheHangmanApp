@@ -16,7 +16,7 @@ export class GameRoutingComponent {
   readonly data$;
   readonly alphabet$;
   readonly displayedWord$;
-  readonly numberOfTries$;
+  readonly numberOfBadTries;
   private readonly gameId: GameId;
 
   constructor(private readonly store: Store,
@@ -25,7 +25,7 @@ export class GameRoutingComponent {
     this.data$ = this.store.select(GamesSelectors.selectGame({ id: this.gameId }));
     this.alphabet$ = this.store.select(GamesSelectors.selectAlphabet({ id: this.gameId }));
     this.displayedWord$ = this.store.select(GamesSelectors.selectDisplayedWord({ id: this.gameId }));
-    this.numberOfTries$ = this.store.select(GamesSelectors.selectNumberOfTries({ id: this.gameId }));
+    this.numberOfBadTries = this.store.select(GamesSelectors.selectNumberOfBadTries({ id: this.gameId }));
   }
 
   updateUsedLetters(alphabetLetter: AlphabetLetter): void {

@@ -33,8 +33,8 @@ export const selectAlphabet = (props: {
     });
   });
 
-export const selectNumberOfTries = (props: { id: GameId; }): MemoizedSelector<object, number> =>
+export const selectNumberOfBadTries = (props: { id: GameId; }): MemoizedSelector<object, number> =>
   createSelector(selectGame({ id: props.id }), game => {
-      return game.usedLetters.length;
+      return game.usedLetters.filter(letter => !game.word.includes(letter)).length;
     }
   );
