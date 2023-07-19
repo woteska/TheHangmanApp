@@ -10,6 +10,12 @@ export const selectGamesState = createFeatureSelector<fromGames.GamesState>(from
 
 const selectGames = createSelector(selectGamesState, state => state.games);
 
+export const selectIsGameExist = (props: { id: GameId; }): MemoizedSelector<object, boolean> =>
+  createSelector(selectGames, games => {
+      return !!games[props.id];
+    }
+  );
+
 export const selectGame = (props: { id: GameId; }): MemoizedSelector<object, Game> =>
   createSelector(selectGames, games => {
       return games[props.id];

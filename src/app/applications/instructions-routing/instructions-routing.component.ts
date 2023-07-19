@@ -8,7 +8,7 @@ import { GameNavigationService } from '../../common/services/game-navigation/gam
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InstructionsRoutingComponent {
-  
+
   constructor(private readonly gameNavigationService: GameNavigationService) {
   }
 
