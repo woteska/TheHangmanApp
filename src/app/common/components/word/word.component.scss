@@ -1,0 +1,16 @@
+.word {
+  display: flex;
+
+  .word__letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: medium black solid;
+
+    &:not(:last-of-type) {
+      margin-right: 0.2rem;
+    }
+  }
+}

@@ -14,8 +14,8 @@ import * as GamesSelectors from '../../common/store/games/games.selectors';
 })
 export class GameRoutingComponent {
   readonly data$;
-  readonly alphabetLetters$;
-  readonly displayedLetters$;
+  readonly alphabet$;
+  readonly displayedWord$;
   readonly numberOfTries$;
   private readonly gameId: GameId;
 
@@ -23,8 +23,8 @@ export class GameRoutingComponent {
               private readonly activatedRoute: ActivatedRoute) {
     this.gameId = this.activatedRoute.snapshot.paramMap.get('gameId') || '';
     this.data$ = this.store.select(GamesSelectors.selectGame({ id: this.gameId }));
-    this.alphabetLetters$ = this.store.select(GamesSelectors.selectDisplayedAlphabetLetters({ id: this.gameId }));
-    this.displayedLetters$ = this.store.select(GamesSelectors.selectDisplayedLetters({ id: this.gameId }));
+    this.alphabet$ = this.store.select(GamesSelectors.selectAlphabet({ id: this.gameId }));
+    this.displayedWord$ = this.store.select(GamesSelectors.selectDisplayedWord({ id: this.gameId }));
     this.numberOfTries$ = this.store.select(GamesSelectors.selectNumberOfTries({ id: this.gameId }));
   }
 

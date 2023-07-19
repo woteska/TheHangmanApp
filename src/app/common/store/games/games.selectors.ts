@@ -15,13 +15,13 @@ export const selectGame = (props: { id: GameId; }): MemoizedSelector<object, Gam
     }
   );
 
-export const selectDisplayedLetters = (props: { id: GameId; }): MemoizedSelector<object, Array<string>> =>
+export const selectDisplayedWord = (props: { id: GameId; }): MemoizedSelector<object, Array<string>> =>
   createSelector(selectGame({ id: props.id }), game => {
-      return game.word.split('').map(letter => game.usedLetters.includes(letter) ? letter : '');
+      return Array.from(game.word).map(letter => game.usedLetters.includes(letter) ? letter : '');
     }
   );
 
-export const selectDisplayedAlphabetLetters = (props: {
+export const selectAlphabet = (props: {
   id: GameId;
 }): MemoizedSelector<object, Array<AlphabetLetter>> =>
   createSelector(selectGame({ id: props.id }), game => {

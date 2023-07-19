@@ -1,5 +1,5 @@
-<p>game-routing works!</p>
 {{data$ | async | json}}
 {{numberOfTries$ | async | json}}
-{{displayedLetters$ | async | json}}
-<div (click)="updateUsedLetters(letter)" *ngFor="let letter of alphabetLetters$ | async">{{letter.letter}}</div>
+
+<app-word [word]="(displayedWord$ | async) || []"></app-word>
+<app-alphabet (update)="updateUsedLetters($event)" [alphabet]="(alphabet$ | async) || []"></app-alphabet>
