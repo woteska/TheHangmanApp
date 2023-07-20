@@ -33,7 +33,7 @@ export class AlphabetComponent {
   }
 
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
-    if (this.isDisabled) {
+    if (this.isDisabled || event.altKey || event.ctrlKey || event.shiftKey) {
       return;
     }
     const searchLetter = event.key.toLocaleLowerCase();
