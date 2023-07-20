@@ -5,11 +5,13 @@
   <div (click)="onPress(letter)"
        (keydown.enter)="onPress(letter)"
        *ngFor="let letter of alphabet; trackBy: trackBy"
+       [matRippleDisabled]="letter.isDisabled || isDisabled"
        [ngClass]="{
        'alphabet__letter': true,
        'alphabet__letter--disabled': letter.isDisabled
        }"
        [tabindex]="letter.isDisabled || isDisabled ? -1 : 0"
+       matRipple
        role="button">
     {{letter.letter | uppercase}}</div>
 </div>

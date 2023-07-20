@@ -1,5 +1,6 @@
 import { NgClass, NgForOf, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { MatRippleModule } from '@angular/material/core';
 import { AlphabetLetter } from '../../definitions/alphabet-letter';
 
 @Component({
@@ -10,7 +11,8 @@ import { AlphabetLetter } from '../../definitions/alphabet-letter';
   imports: [
     NgClass,
     NgForOf,
-    UpperCasePipe
+    UpperCasePipe,
+    MatRippleModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
