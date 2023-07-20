@@ -1,33 +1,16 @@
 <div class="card">
-  <h1 class="heading">{{'the hangman' | titlecase}}</h1>
+  <h1 class="card__heading">{{'the hangman' | titlecase}}</h1>
 
-  <div class="description">
-    <p class="description__item">Let's play <span class="description__item--highlight">Hangman!</span></p>
-    <p class="description__item">How many letters do you want in your word?</p>
+  <div class="card__description">
+    <p class="card__description-item">Let's play <span class="card__description-item--highlight">Hangman!</span></p>
+    <p class="card__description-item">How many letters do you want in your word?</p>
   </div>
 
-  <div class="choose-letters-container">
-    <div (click)="setNumberOfLetters(letterNumber)"
-         (keydown.enter)="setNumberOfLetters(letterNumber)"
-         *ngFor="let letterNumber of letterNumbers"
-         [class.choose-letters-button--selected]="selectedNumber === letterNumber"
-         class="choose-letters-button"
-         role="button"
-         tabindex="0">
-      {{letterNumber}}
-    </div>
-    <div (click)="setNumberOfLetters(0)"
-         (keydown.enter)="setNumberOfLetters(0)"
-         [class.choose-letters-button--selected]="selectedNumber === 0"
-         class="choose-letters-button"
-         role="button"
-         tabindex="0">
-      {{'random' | titlecase}}
-    </div>
-  </div>
+  <app-word-letters [(numberOfLetters)]="numberOfLetters" [letterNumbers]="letterNumbers"></app-word-letters>
 
-  <div>
+  <div class="card__bottom-actions">
     <button (click)="onStartNewGame()"
+            class="card__bottom-action"
             color="primary"
             mat-raised-button>
       {{'let\'s play' | uppercase}}

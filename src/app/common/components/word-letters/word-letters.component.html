@@ -1,0 +1,24 @@
+<div class="word-letters">
+  <div (click)="setNumberOfLetters(letterNumber)"
+       (keydown.enter)="setNumberOfLetters(letterNumber)"
+       *ngFor="let letterNumber of letterNumbers"
+       [ngClass]="{
+       'word-letter': true,
+       'word-letter--selected': numberOfLetters === letterNumber
+       }"
+       class="word-letter"
+       role="button"
+       tabindex="0">
+    {{letterNumber}}
+  </div>
+  <div (click)="setNumberOfLetters(0)"
+       (keydown.enter)="setNumberOfLetters(0)"
+       [ngClass]="{
+       'word-letter': true,
+       'word-letter--selected': numberOfLetters === 0
+       }"
+       role="button"
+       tabindex="0">
+    {{'random' | titlecase}}
+  </div>
+</div>

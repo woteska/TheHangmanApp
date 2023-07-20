@@ -10,6 +10,7 @@ import { GameService } from '../../common/services/game/game.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StartNewGameRoutingComponent {
+  readonly letterNumbers: Array<NumberOfLetters> = [3, 4, 5, 6, 7, 8, 9];
 
   constructor(private readonly gameNavigationService: GameNavigationService,
               private readonly gameService: GameService) {

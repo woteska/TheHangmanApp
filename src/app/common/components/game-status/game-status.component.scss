@@ -1,15 +1,17 @@
+@use '../../../../styles/variables';
+
 .game-status {
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 80%;
-
-  &--lost {
-    color: red;
-  }
+  font-size: small;
 
   &--won {
-    color: green;
+    color: variables.$success-color;
+  }
+
+  &--lost {
+    color: variables.$error-color;
   }
 
   .game-status__text {

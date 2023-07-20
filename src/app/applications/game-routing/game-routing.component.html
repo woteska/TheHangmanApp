@@ -1,31 +1,43 @@
 <ng-container *ngIf="status$ | async as status">
   <ng-container *ngIf="displayedWord$ | async as displayedWord">
+    <div class="card">
+      <div class="card__left">
+        <app-hangman [numberOfTries]="(numberOfBadTries$ | async) || 0"></app-hangman>
+      </div>
 
-    <app-game-status [status]="status"></app-game-status>
+      <div class="card__right">
+        <h1 class="card__heading">{{'the hangman' | titlecase}}</h1>
 
-    <p *ngIf="status === GameStatus.Pending">It's a {{displayedWord.length}} letter word</p>
+        <div class="game-status">
+          <app-game-status [status]="status" class="game-status__text"></app-game-status>
+          <p class="game-status__hint">
+            <ng-container *ngIf="status === GameStatus.Pending">
+              It's a {{displayedWord.length}} letter word
+            </ng-container>
+          </p>
+          <app-word [word]="displayedWord" class="game-status__word"></app-word>
+        </div>
 
-    <app-hangman [numberOfTries]="(numberOfBadTries$ | async) || 0" class="hangman"></app-hangman>
+        <p class="card__hint">Play with a word</p>
+        <app-alphabet (press)="updateUsedLetters($event)"
+                      [alphabet]="(alphabet$ | async) || []"
+                      [isDisabled]="status !== GameStatus.Pending"></app-alphabet>
 
-    <app-word [word]="(displayedWord$ | async) || []"></app-word>
+        <div class="card__bottom-actions">
+          <button (click)="onEndGame()"
+                  *ngIf="status === GameStatus.Pending"
+                  class="card__bottom-action"
+                  mat-raised-button>
+            {{'end game' | uppercase}}
+          </button>
 
-    <p>Play with a word</p>
-    <app-alphabet (press)="updateUsedLetters($event)"
-                  [alphabet]="(alphabet$ | async) || []"
-                  [isDisabled]="status !== GameStatus.Pending"></app-alphabet>
-
-    <div>
-      <button (click)="onEndGame()"
-              *ngIf="status === GameStatus.Pending"
-              mat-raised-button>
-        {{'end game' | uppercase}}
-      </button>
-
-      <button (click)="onStartNewGame()"
-              color="primary"
-              mat-raised-button>
-        {{'start new game' | uppercase}}
-      </button>
+          <button (click)="onStartNewGame()"
+                  color="primary"
+                  mat-raised-button>
+            {{'start new game' | uppercase}}
+          </button>
+        </div>
+      </div>
     </div>
   </ng-container>
 </ng-container>

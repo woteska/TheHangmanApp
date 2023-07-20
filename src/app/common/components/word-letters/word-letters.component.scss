@@ -1,0 +1,30 @@
+@use '../../../../styles/variables';
+
+.word-letters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .word-letter {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    $_size: 2rem;
+    width: $_size;
+    height: $_size;
+    min-width: fit-content;
+    padding: 0.25rem;
+    font-weight: bold;
+    background-color: variables.$secondary-color;
+    color: variables.$primary-color;
+    box-shadow: variables.$button-like-box-shadow;
+    margin: 0.25rem;
+  }
+
+  .word-letter--selected {
+    background-color: variables.$primary-color;
+    color: variables.$secondary-color;
+  }
+}

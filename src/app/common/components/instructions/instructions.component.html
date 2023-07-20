@@ -1,16 +1,39 @@
 <div class="card">
-  <h1 class="heading">{{'the hangman' | titlecase}}</h1>
+  <h1 class="card__heading">{{'the hangman' | titlecase}}</h1>
 
-  <app-hangman class="hangman"></app-hangman>
+  <app-hangman></app-hangman>
 
-  <h3 class="sub-heading">Game instructions</h3>
+  <h2 class="card__sub-heading">Game instructions</h2>
 
-  <div class="description">
-    <p class="description__item">Lorem ipsum</p>
+  <div class="card__description">
+    <p class="card__description-item">
+      Hangman is an old school favorite, a word game where the goal is simply to find the missing word or words.
+    </p>
+    <p class="card__description-item">
+      You will be presented with a number of blank spaces representing the missing letters you need to find.
+    </p>
+    <p class="card__description-item">
+      Use the keyboard to guess a letter (I recommend starting with vowels).
+    </p>
+    <p class="card__description-item">
+      If your chosen letter exists in the answer, then all places in the answer where that letter appear will be
+      revealed.
+    </p>
+    <p class="card__description-item">
+      After you've revealed several letters, you may be able to guess what the answer is and fill in the remaining
+      letters.
+    </p>
+    <p class="card__description-item">
+      Be warned, every time you guess a letter wrong you loose a life and the hangman begins to appear, piece by piece.
+    </p>
+    <p class="card__description-item">
+      Solve the puzzle before the hangman dies.
+    </p>
   </div>
 
-  <div>
+  <div class="card__bottom-actions">
     <button (click)="onGotIt()"
+            class="card__bottom-action"
             color="primary"
             mat-raised-button>
       {{'got it!' | uppercase}}

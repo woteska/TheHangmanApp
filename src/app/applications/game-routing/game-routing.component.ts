@@ -15,20 +15,17 @@ import * as GamesSelectors from '../../common/store/games/games.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GameRoutingComponent {
-  readonly data$;
   readonly alphabet$;
   readonly displayedWord$;
   readonly numberOfBadTries$;
   readonly status$;
   readonly GameStatus = GameStatus;
-  protected readonly Performance = Performance;
   private readonly gameId: GameId;
 
   constructor(private readonly store: Store,
               private readonly gameNavigationService: GameNavigationService,
               private readonly activatedRoute: ActivatedRoute) {
     this.gameId = this.activatedRoute.snapshot.paramMap.get('gameId') || '';
-    this.data$ = this.store.select(GamesSelectors.selectGame({ id: this.gameId }));
     this.alphabet$ = this.store.select(GamesSelectors.selectAlphabet({ id: this.gameId }));
     this.displayedWord$ = this.store.select(GamesSelectors.selectDisplayedWord({ id: this.gameId }));
     this.numberOfBadTries$ = this.store.select(GamesSelectors.selectNumberOfBadTries({ id: this.gameId }));
