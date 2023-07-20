@@ -18,7 +18,7 @@ export class GameNavigationService {
     this.router.navigate(['start-new-game']);
   }
 
-  toInstructions(): void {
-    this.router.navigate(['instructions']);
+  toInstructions(resumeGameId?: string): void {
+    this.router.navigate(['instructions', resumeGameId]);
   }
 }

@@ -1,6 +1,7 @@
 import { NgIf, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { AlphabetLetter } from '../../definitions/alphabet-letter';
 import { GameStatus } from '../../definitions/game-status';
 import { AlphabetComponent } from '../alphabet/alphabet.component';
@@ -21,7 +22,8 @@ import { WordComponent } from '../word/word.component';
     GameStatusComponent,
     TitleCasePipe,
     UpperCasePipe,
-    HangmanComponent
+    HangmanComponent,
+    MatIconModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -33,6 +35,7 @@ export class GameComponent {
   @Input({ required: true }) alphabet: Array<AlphabetLetter> = [];
   @Output() readonly pressLetter = new EventEmitter<AlphabetLetter>();
   @Output() readonly endGame = new EventEmitter<void>();
+  @Output() readonly instructions = new EventEmitter<void>();
   @Output() readonly startNewGame = new EventEmitter<void>();
 
   onPressLetter(alp: AlphabetLetter): void {
@@ -41,6 +44,10 @@ export class GameComponent {
 
   onEndGame(): void {
     this.endGame.emit();
+  }
+
+  onInstructions(): void {
+    this.instructions.emit();
   }
 
   onStartNewGame(): void {

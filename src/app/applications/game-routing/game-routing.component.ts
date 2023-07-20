@@ -25,7 +25,7 @@ export class GameRoutingComponent {
   constructor(private readonly store: Store,
               private readonly gameNavigationService: GameNavigationService,
               private readonly activatedRoute: ActivatedRoute) {
-    this.gameId = this.activatedRoute.snapshot.paramMap.get('gameId') || '';
+    this.gameId = this.getGameIdFromUrl();
     this.alphabet$ = this.store.select(GamesSelectors.selectAlphabet({ id: this.gameId }));
     this.displayedWord$ = this.store.select(GamesSelectors.selectDisplayedWord({ id: this.gameId }));
     this.numberOfBadTries$ = this.store.select(GamesSelectors.selectNumberOfBadTries({ id: this.gameId }));
@@ -36,12 +36,20 @@ export class GameRoutingComponent {
     this.gameNavigationService.toStartNewGame();
   }
 
-  updateUsedLetters(alphabetLetter: AlphabetLetter): void {
+  onInstructions(): void {
+    this.gameNavigationService.toInstructions(this.gameId);
+  }
+
+  onPressLetter(alphabetLetter: AlphabetLetter): void {
     this.store.dispatch(GamesActions.updateUsedLetters({ id: this.gameId, letter: alphabetLetter.letter }));
   }
 
   onEndGame(): void {
     this.store.dispatch(GamesActions.endGame({ id: this.gameId }));
     this.onStartNewGame();
+  }
+
+  private getGameIdFromUrl(): GameId {
+    return this.activatedRoute.snapshot.paramMap.get('gameId') || '';
   }
 }

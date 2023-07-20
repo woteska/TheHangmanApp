@@ -1,12 +1,19 @@
 @use '../../../../styles/card';
 
 .card {
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  .card__body {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
   .card__heading {
     text-align: unset;
+  }
+
+  .card__header {
+    display: flex;
+    justify-content: end;
   }
 
   .card__left {

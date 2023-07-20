@@ -1,11 +1,24 @@
 .card {
   width: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border: thin solid gray;
   border-radius: 1rem;
-  padding: 3rem;
+
+  .card__header {
+    padding: 1rem;
+  }
+
+  .card__body {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &:has(.card__header) {
+    .card__body {
+      padding-top: 0;
+    }
+  }
 
   .card__hint {
     margin: 0.5rem 0;

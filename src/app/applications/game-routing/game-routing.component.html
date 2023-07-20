@@ -1,6 +1,7 @@
 <ng-container *ngIf="status$ | async as status">
   <app-game (endGame)="onEndGame()"
-            (pressLetter)="updateUsedLetters($event)"
+            (instructions)="onInstructions()"
+            (pressLetter)="onPressLetter($event)"
             (startNewGame)="onStartNewGame()"
             [alphabet]="(alphabet$ | async) || []"
             [displayedWord]="(displayedWord$ | async) || []"

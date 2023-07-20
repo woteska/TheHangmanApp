@@ -11,6 +11,10 @@ const routes: Routes = [
     component: InstructionsRoutingComponent
   },
   {
+    path: 'instructions/:gameId',
+    component: InstructionsRoutingComponent
+  },
+  {
     path: 'start-new-game',
     component: StartNewGameRoutingComponent
   },
