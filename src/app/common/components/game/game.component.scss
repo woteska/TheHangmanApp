@@ -1,5 +1,6 @@
 @use '../../../../styles/card';
 @use '../../../../styles/variables';
+@use '../../../../styles/breakpoints';
 
 .card {
   .card__body {
@@ -14,11 +15,25 @@
 
   .card__header {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   .card__left {
     padding-right: variables.$gap-large;
+
+    @media screen and (max-width: breakpoints.$md) {
+      display: none;
+    }
+  }
+
+  .card__right {
+    .hangman {
+      display: none;
+
+      @media screen and (max-width: breakpoints.$md) {
+        display: block;
+      }
+    }
   }
 
   .game-status {

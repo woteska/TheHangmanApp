@@ -16,6 +16,10 @@
     <div class="card__right">
       <h2 class="card__heading">{{'the hangman' | titlecase}}</h2>
 
+      <div class="hangman">
+        <app-hangman [numberOfTries]="numberOfBadTries"></app-hangman>
+      </div>
+
       <div class="game-status">
         <app-game-status [status]="status" class="game-status__text"></app-game-status>
         <p class="game-status__hint">
