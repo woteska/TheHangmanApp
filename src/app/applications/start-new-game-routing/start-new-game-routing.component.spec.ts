@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { StartNewGameComponent } from '../../common/components/start-new-game/start-new-game.component';
 import { StartNewGameRoutingComponent } from './start-new-game-routing.component';
 
 describe('StartNewGameRoutingComponent', () => {
@@ -7,7 +10,14 @@ describe('StartNewGameRoutingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StartNewGameRoutingComponent]
+      declarations: [StartNewGameRoutingComponent],
+      imports: [
+        StoreModule,
+        StartNewGameComponent
+      ],
+      providers: [
+        provideMockStore()
+      ]
     });
     fixture = TestBed.createComponent(StartNewGameRoutingComponent);
     component = fixture.componentInstance;
