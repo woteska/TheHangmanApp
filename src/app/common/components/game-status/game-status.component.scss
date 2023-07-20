@@ -1,16 +1,18 @@
-.status--lost {
-  color: red;
-}
-
-.status--won {
-  color: green;
-}
-
-.status {
+.game-status {
   display: flex;
   align-items: center;
-}
+  font-weight: bold;
+  font-size: 80%;
 
-.status__text {
-  margin: 0 0.25rem;
+  &--lost {
+    color: red;
+  }
+
+  &--won {
+    color: green;
+  }
+
+  .game-status__text {
+    margin: 0 0.25rem;
+  }
 }

@@ -1,16 +1,20 @@
-<p *ngIf="status === GameStatus.Won || status === GameStatus.Lost"
-   [ngClass]="{
-   'status': true,
-   'status--won': status === GameStatus.Won,
-   'status--lost': status === GameStatus.Lost
+<p [ngClass]="{
+   'game-status': true,
+   'game-status--won': status === GameStatus.Won,
+   'game-status--lost': status === GameStatus.Lost
    }">
-  <mat-icon [ngSwitch]="status" class="status__icon">
-    <ng-container *ngSwitchCase="GameStatus.Lost">
+  <mat-icon [ngSwitch]="status"
+            class="game-status__icon">
+    <ng-container
+      *ngSwitchCase="GameStatus.Lost">
       sentiment_very_dissatisfied
     </ng-container>
-    <ng-container *ngSwitchCase="GameStatus.Won">
+    <ng-container
+      *ngSwitchCase="GameStatus.Won">
       sentiment_satisfied
     </ng-container>
   </mat-icon>
-  <span class="status__text">{{status | appGameStatus}}</span>
+  <span class="game-status__text">
+    {{status | appGameStatus}}
+  </span>
 </p>

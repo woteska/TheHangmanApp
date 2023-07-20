@@ -14,5 +14,5 @@ import { GameStatusPipe } from '../../pipe/game-status/game-status.pipe';
 })
 export class GameStatusComponent {
   readonly GameStatus = GameStatus;
-  @Input({ required: true }) status: GameStatus | null = null;
+  @Input({ required: true }) status: GameStatus = GameStatus.Pending;
 }
