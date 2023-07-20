@@ -10,7 +10,8 @@
     <app-word [word]="(displayedWord$ | async) || []"></app-word>
 
     <p>Play with a word</p>
-    <app-alphabet (update)="updateUsedLetters($event)" [alphabet]="(alphabet$ | async) || []"
+    <app-alphabet (press)="updateUsedLetters($event)"
+                  [alphabet]="(alphabet$ | async) || []"
                   [isDisabled]="status !== GameStatus.Pending"></app-alphabet>
 
     <div>

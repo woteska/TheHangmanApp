@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AlphabetLetter } from '../../definitions/alphabet-letter';
 
 @Component({
@@ -13,15 +13,27 @@ import { AlphabetLetter } from '../../definitions/alphabet-letter';
 export class AlphabetComponent {
   @Input({ required: true }) alphabet: Array<AlphabetLetter> = [];
   @Input() isDisabled = true;
-  @Output() readonly update = new EventEmitter<AlphabetLetter>();
+  @Output() readonly press = new EventEmitter<AlphabetLetter>();
 
-  onType(letter: AlphabetLetter): void {
+  onPress(letter: AlphabetLetter): void {
+    if (this.isDisabled || letter.isDisabled) {
+      return;
+    }
+    this.press.emit(letter);
+  }
+
+  trackBy(index: number, letter: AlphabetLetter): string {
+    return letter.letter;
+  }
+
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
     if (this.isDisabled) {
       return;
     }
-    if (letter.isDisabled) {
-      return;
+    const searchLetter = event.key.toLocaleLowerCase();
+    const foundLetter = this.alphabet.find(letter => letter.letter === searchLetter && !letter.isDisabled);
+    if (foundLetter) {
+      this.press.emit(foundLetter);
     }
-    this.update.emit(letter);
   }
 }

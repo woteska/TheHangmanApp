@@ -2,10 +2,13 @@
        'alphabet': true,
        'alphabet--disabled': isDisabled
        }">
-  <div (click)="onType(letter)" *ngFor="let letter of alphabet"
+  <div (click)="onPress(letter)"
+       (keydown.enter)="onPress(letter)"
+       *ngFor="let letter of alphabet; trackBy: trackBy"
        [ngClass]="{
        'alphabet__letter': true,
        'alphabet__letter--disabled': letter.isDisabled
-       }">
-    {{letter.letter}}</div>
+       }"
+       [tabindex]="letter.isDisabled || isDisabled ? -1 : 0">
+    {{letter.letter | uppercase}}</div>
 </div>
