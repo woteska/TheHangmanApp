@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card__left">
+    <app-hangman [numberOfTries]="numberOfBadTries"></app-hangman>
+  </div>
+
+  <div class="card__right">
+    <h1 class="card__heading">{{'the hangman' | titlecase}}</h1>
+
+    <div class="game-status">
+      <app-game-status [status]="status" class="game-status__text"></app-game-status>
+      <p class="game-status__hint">
+        <ng-container *ngIf="status === GameStatus.Pending">
+          It's a {{displayedWord.length}} letter word
+        </ng-container>
+      </p>
+      <app-word [word]="displayedWord" class="game-status__word"></app-word>
+    </div>
+
+    <p class="card__hint">Play with a word</p>
+    <app-alphabet (press)="onPressLetter($event)"
+                  [alphabet]="alphabet"
+                  [isDisabled]="status !== GameStatus.Pending"></app-alphabet>
+
+    <div class="card__bottom-actions">
+      <button (click)="onEndGame()"
+              *ngIf="status === GameStatus.Pending"
+              class="card__bottom-action"
+              mat-raised-button>
+        {{'end game' | uppercase}}
+      </button>
+
+      <button (click)="onStartNewGame()"
+              color="primary"
+              mat-raised-button>
+        {{'start new game' | uppercase}}
+      </button>
+    </div>
+  </div>
+</div>

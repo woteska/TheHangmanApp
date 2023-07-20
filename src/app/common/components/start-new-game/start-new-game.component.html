@@ -6,7 +6,8 @@
     <p class="card__description-item">How many letters do you want in your word?</p>
   </div>
 
-  <app-word-letters [(numberOfLetters)]="numberOfLetters" [letterNumbers]="letterNumbers"></app-word-letters>
+  <app-word-letters [(numberOfLetters)]="numberOfLetters"
+                    [letterNumbers]="letterNumbers"></app-word-letters>
 
   <div class="card__bottom-actions">
     <button (click)="onStartNewGame()"

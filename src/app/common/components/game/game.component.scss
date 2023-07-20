@@ -1,0 +1,27 @@
+@use '../../../../styles/card';
+
+.card {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  .card__heading {
+    text-align: unset;
+  }
+
+  .card__left {
+    padding-right: 2rem;
+  }
+
+  .game-status {
+    margin-bottom: 2rem;
+
+    .game-status__hint {
+      margin-bottom: 0.25rem;
+
+      &:after {
+        content: '\00a0';
+      }
+    }
+  }
+}

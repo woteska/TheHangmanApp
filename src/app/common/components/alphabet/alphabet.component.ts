@@ -1,13 +1,17 @@
-import { CommonModule } from '@angular/common';
+import { NgClass, NgForOf, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AlphabetLetter } from '../../definitions/alphabet-letter';
 
 @Component({
   selector: 'app-alphabet',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './alphabet.component.html',
   styleUrls: ['./alphabet.component.scss'],
+  imports: [
+    NgClass,
+    NgForOf,
+    UpperCasePipe
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlphabetComponent {
