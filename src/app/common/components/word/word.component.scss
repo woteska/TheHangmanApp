@@ -10,7 +10,7 @@
     $_size: 1.75rem;
     width: $_size;
     height: $_size;
-    border: medium black solid;
+    border: medium variables.$primary-color solid;
 
     &:not(:last-of-type) {
       margin-right: variables.$gap-extra-small;
