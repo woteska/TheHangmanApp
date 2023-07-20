@@ -11,4 +11,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class WordComponent {
   @Input({ required: true }) word: Array<string> = [];
+
+  trackBy(index: number, letter: string): string {
+    return letter;
+  }
 }
