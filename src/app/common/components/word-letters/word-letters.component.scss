@@ -15,12 +15,12 @@
     width: $_size;
     height: $_size;
     min-width: fit-content;
-    padding: 0.25rem;
+    padding: variables.$gap-extra-small;
     font-weight: bold;
     background-color: variables.$secondary-color;
     color: variables.$primary-color;
     box-shadow: variables.$button-like-box-shadow;
-    margin: 0.25rem;
+    margin: variables.$gap-extra-small;
   }
 
   .word-letter--selected {

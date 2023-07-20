@@ -1,14 +1,16 @@
+@use './variables.scss';
+
 .card {
   width: fit-content;
   border: thin solid gray;
   border-radius: 1rem;
 
   .card__header {
-    padding: 1rem;
+    padding: variables.$gap-medium;
   }
 
   .card__body {
-    padding: 3rem;
+    padding: variables.$gap-extra-large;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +23,7 @@
   }
 
   .card__hint {
-    margin: 0.5rem 0;
+    margin: variables.$gap-small 0;
     font-size: small;
   }
 
@@ -31,13 +33,13 @@
   }
 
   .card__description {
-    margin: 1rem 0;
+    margin: variables.$gap-medium 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     .card__description-item {
-      margin: 0.3rem 0;
+      margin: variables.$gap-extra-small 0;
       text-align: center;
 
       &--highlight {
@@ -47,10 +49,10 @@
   }
 
   .card__bottom-actions {
-    margin-top: 2rem;
+    margin-top: variables.$gap-large;
 
     .card__bottom-action:not(:last-of-type) {
-      margin-right: 0.5rem;
+      margin-right: variables.$gap-small;
     }
   }
 }

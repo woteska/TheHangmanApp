@@ -1,4 +1,5 @@
 @use '../../../../styles/card';
+@use '../../../../styles/variables';
 
 .card {
   .card__body {
@@ -17,14 +18,14 @@
   }
 
   .card__left {
-    padding-right: 2rem;
+    padding-right: variables.$gap-large;
   }
 
   .game-status {
-    margin-bottom: 2rem;
+    margin-bottom: variables.$gap-large;
 
     .game-status__hint {
-      margin-bottom: 0.25rem;
+      margin-bottom: variables.$gap-extra-small;
 
       &:after {
         content: '\00a0';
