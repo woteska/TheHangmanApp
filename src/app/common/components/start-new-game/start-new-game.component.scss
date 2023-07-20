@@ -1,3 +1,5 @@
+@use '../../../../styles/variables';
+
 .card {
   display: flex;
   flex-direction: column;
@@ -44,7 +46,7 @@
       padding: 0.25rem;
       font-weight: bold;
       color: black;
-      box-shadow: 0 0 0.1rem 0 gray;
+      box-shadow: variables.$button-like-box-shadow;
       margin: 0.25rem;
     }
 
@@ -52,11 +54,5 @@
       background-color: black;
       color: white
     }
-  }
-
-  .got-it-button {
-    cursor: pointer;
-    background-color: black;
-    color: white;
   }
 }

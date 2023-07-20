@@ -1,3 +1,5 @@
+@use '../../../../styles/variables';
+
 .alphabet {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -13,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 0.15rem 0 gray;
+    box-shadow: variables.$button-like-box-shadow;
   }
 
   .alphabet__letter--disabled {

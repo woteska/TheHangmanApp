@@ -7,50 +7,30 @@
   </div>
 
   <div class="choose-letters-container">
-    <div (click)="setNumberOfLetters(3)" (keydown.enter)="setNumberOfLetters(3)"
-         [class.choose-letters-button--selected]="selectedNumber === 3"
-         class="choose-letters-button" tabindex="0">
-      3
+    <div (click)="setNumberOfLetters(letterNumber)"
+         (keydown.enter)="setNumberOfLetters(letterNumber)"
+         *ngFor="let letterNumber of letterNumbers"
+         [class.choose-letters-button--selected]="selectedNumber === letterNumber"
+         class="choose-letters-button"
+         role="button"
+         tabindex="0">
+      {{letterNumber}}
     </div>
-    <div (click)="setNumberOfLetters(4)" (keydown.enter)="setNumberOfLetters(4)"
-         [class.choose-letters-button--selected]="selectedNumber === 4"
-         class="choose-letters-button" tabindex="0">
-      4
-    </div>
-    <div (click)="setNumberOfLetters(5)" (keydown.enter)="setNumberOfLetters(5)"
-         [class.choose-letters-button--selected]="selectedNumber === 5"
-         class="choose-letters-button" tabindex="0">
-      5
-    </div>
-    <div (click)="setNumberOfLetters(6)" (keydown.enter)="setNumberOfLetters(6)"
-         [class.choose-letters-button--selected]="selectedNumber === 6"
-         class="choose-letters-button" tabindex="0">
-      6
-    </div>
-    <div (click)="setNumberOfLetters(7)" (keydown.enter)="setNumberOfLetters(7)"
-         [class.choose-letters-button--selected]="selectedNumber === 7"
-         class="choose-letters-button" tabindex="0">
-      7
-    </div>
-    <div (click)="setNumberOfLetters(8)" (keydown.enter)="setNumberOfLetters(8)"
-         [class.choose-letters-button--selected]="selectedNumber === 8"
-         class="choose-letters-button" tabindex="0">
-      8
-    </div>
-    <div (click)="setNumberOfLetters(9)" (keydown.enter)="setNumberOfLetters(9)"
-         [class.choose-letters-button--selected]="selectedNumber === 9"
-         class="choose-letters-button" tabindex="0">
-      9
-    </div>
-    <div (click)="setNumberOfLetters(0)" (keydown.enter)="setNumberOfLetters(0)"
+    <div (click)="setNumberOfLetters(0)"
+         (keydown.enter)="setNumberOfLetters(0)"
          [class.choose-letters-button--selected]="selectedNumber === 0"
          class="choose-letters-button"
-         tabindex="0">{{'random' | titlecase}}</div>
+         role="button"
+         tabindex="0">
+      {{'random' | titlecase}}
+    </div>
   </div>
 
   <div>
-    <button (click)="onStartNewGame()" class="got-it-button"
-            mat-flat-button
-            tabindex="0">{{'let\'s play' | uppercase}}</button>
+    <button (click)="onStartNewGame()"
+            color="primary"
+            mat-raised-button>
+      {{'let\'s play' | uppercase}}
+    </button>
   </div>
 </div>

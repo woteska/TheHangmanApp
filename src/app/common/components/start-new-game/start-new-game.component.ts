@@ -13,6 +13,7 @@ import { NumberOfLetters } from '../../definitions/number-of-letters';
 })
 export class StartNewGameComponent {
   selectedNumber: NumberOfLetters | null = null;
+  readonly letterNumbers: Array<NumberOfLetters> = [3, 4, 5, 6, 7, 8, 9];
   @Output() private readonly startNewGame = new EventEmitter<NumberOfLetters>;
 
   setNumberOfLetters(numberOfLetter: NumberOfLetters): void {
