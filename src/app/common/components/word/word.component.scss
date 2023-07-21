@@ -1,7 +1,9 @@
 @use '../../../../styles/variables';
 
 .word {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
+  grid-gap: variables.$gap-extra-small;
 
   .word__letter {
     display: flex;
@@ -11,9 +13,5 @@
     width: $_size;
     height: $_size;
     border: medium variables.$primary-color solid;
-
-    &:not(:last-of-type) {
-      margin-right: variables.$gap-extra-small;
-    }
   }
 }
