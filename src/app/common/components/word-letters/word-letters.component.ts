@@ -1,4 +1,4 @@
-import { NgClass, NgForOf, TitleCasePipe } from '@angular/common';
+import { NgClass, NgForOf, NgIf, TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { NumberOfLetters } from '../../definitions/number-of-letters';
@@ -12,7 +12,8 @@ import { NumberOfLetters } from '../../definitions/number-of-letters';
     NgClass,
     NgForOf,
     TitleCasePipe,
-    MatRippleModule
+    MatRippleModule,
+    NgIf
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

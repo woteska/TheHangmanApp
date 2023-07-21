@@ -1,15 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
 import { GameStatus } from '../../definitions/game-status';
 import { Games } from '../../definitions/games';
+import { words } from '../../definitions/words';
 import * as GamesActions from './games.actions';
 
 export const name = 'games';
 
 export interface GamesState {
+  words: Array<string>;
   games: Games;
 }
 
 export const initialState: Readonly<GamesState> = {
+  words: [...words],
   games: {}
 };
 

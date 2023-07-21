@@ -4,11 +4,20 @@ import { AlphabetLetter } from '../../definitions/alphabet-letter';
 import { Game } from '../../definitions/game';
 import { GameId } from '../../definitions/game-id';
 import { GameStatus } from '../../definitions/game-status';
+import { NumberOfLetters } from '../../definitions/number-of-letters';
 import * as fromGames from './games.reducer';
 
 export const selectGamesState = createFeatureSelector<fromGames.GamesState>(fromGames.name);
 
-const selectGames = createSelector(selectGamesState, state => state.games);
+export const selectGames = createSelector(selectGamesState, state => state.games);
+
+export const selectWords = createSelector(selectGamesState, state => state.words);
+
+export const selectNumberOfLetters = createSelector(selectWords, words => {
+  const numberOfLetters = new Set<NumberOfLetters>();
+  words.forEach(word => numberOfLetters.add(word.length));
+  return Array.from(numberOfLetters).sort((a, b) => a - b);
+});
 
 export const selectIsGameExist = (props: { id: GameId; }): MemoizedSelector<object, boolean> =>
   createSelector(selectGames, games => {

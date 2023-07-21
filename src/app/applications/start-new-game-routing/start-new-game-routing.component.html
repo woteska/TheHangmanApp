@@ -1,2 +1,2 @@
 <app-start-new-game (startNewGame)="onStartNewGame($event)"
-                    [letterNumbers]="letterNumbers"></app-start-new-game>
+                    [letterNumbers]="(letterNumbers$ | async) || []"></app-start-new-game>

@@ -14,6 +14,7 @@
   </div>
   <div (click)="setNumberOfLetters(0)"
        (keydown.enter)="setNumberOfLetters(0)"
+       *ngIf="letterNumbers.length"
        [ngClass]="{
        'word-letter': true,
        'word-letter--selected': numberOfLetters === 0
