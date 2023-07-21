@@ -43,6 +43,9 @@ export class GameComponent {
   }
 
   onEndGame(): void {
+    if (this.status !== GameStatus.Pending) {
+      return;
+    }
     this.endGame.emit();
   }
 
