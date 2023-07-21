@@ -27,11 +27,16 @@
   }
 
   .card__right {
+    position: relative;
+
     .hangman {
       display: none;
 
       @media screen and (max-width: breakpoints.$md) {
         display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
       }
     }
   }

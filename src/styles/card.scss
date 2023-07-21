@@ -59,7 +59,7 @@
     margin-top: variables.$gap-large;
 
     .card__bottom-action:not(:last-of-type) {
-      margin-right: variables.$gap-small;
+      margin: variables.$gap-small variables.$gap-small variables.$gap-small 0;
     }
   }
 }
